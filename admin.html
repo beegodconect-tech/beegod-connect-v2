@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BeeGod Connect — Painel do DJ</title>
+  <meta name="description" content="Painel do DJ BeeGod Connect em tempo real." />
+  <link rel="stylesheet" href="admin.css" />
+</head>
+<body>
+  <main class="admin-shell">
+    <section class="login-card" id="loginCard">
+      <div class="mark">BEEGOD <span>CONNECT</span></div>
+      <h1>Painel do DJ</h1>
+      <p>Entre para acompanhar os pedidos em tempo real.</p>
+      <form id="loginForm">
+        <label>Senha do painel
+          <input id="adminPassword" type="password" autocomplete="current-password" placeholder="Digite a senha" required />
+        </label>
+        <button class="btn primary" type="submit">Entrar no painel</button>
+        <small>Senha inicial: <strong>beegod2026</strong></small>
+      </form>
+    </section>
+
+    <section class="panel hidden" id="panel">
+      <header class="panel-header">
+        <div>
+          <div class="mark">BEEGOD <span>CONNECT</span></div>
+          <h1>🎧 Painel do DJ</h1>
+          <p id="connectionStatus">Conectando ao Firestore...</p>
+        </div>
+        <div class="header-actions">
+          <a class="btn ghost" href="index.html">Abrir experiência</a>
+          <button class="btn ghost" id="logoutBtn">Sair</button>
+        </div>
+      </header>
+
+      <section class="stats" aria-label="Resumo dos pedidos">
+        <article><span>Pendentes</span><strong id="pendingCount">0</strong></article>
+        <article><span>Aceitos</span><strong id="acceptedCount">0</strong></article>
+        <article><span>Tocadas</span><strong id="playedCount">0</strong></article>
+        <article><span>Recusados</span><strong id="rejectedCount">0</strong></article>
+      </section>
+
+      <section class="toolbar">
+        <input id="searchInput" type="search" placeholder="Buscar por nome, música ou mensagem" />
+        <select id="filterStatus" aria-label="Filtrar status">
+          <option value="all">Todos</option>
+          <option value="pendente">Pendentes</option>
+          <option value="aceito">Aceitos</option>
+          <option value="tocado">Tocadas</option>
+          <option value="recusado">Recusados</option>
+        </select>
+      </section>
+
+      <section>
+        <div class="section-title">
+          <span></span>
+          <h2>Fila de músicas e dedicatórias</h2>
+        </div>
+        <div id="requestList" class="request-list"></div>
+      </section>
+
+      <section>
+        <div class="section-title">
+          <span></span>
+          <h2>Apoios / Pix</h2>
+        </div>
+        <div id="supportList" class="support-list"></div>
+      </section>
+    </section>
+  </main>
+
+  <script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore-compat.js"></script>
+  <script src="firebase-config.js"></script>
+  <script src="admin.js"></script>
+</body>
+</html>
