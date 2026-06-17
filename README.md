@@ -1,23 +1,34 @@
-# BeeGod Connect V2
+# BeeGod Connect V2.2 — Firebase funcionando
 
-Sistema de experiência musical criado por Andrei Pires / BeeGod Society.
+Projeto HTML puro conectado ao Firebase/Firestore do projeto `beegod-connect`.
 
-## Estrutura
+## Como testar
+1. Abra `index.html` no navegador.
+2. Clique em **Pedir música** e envie um teste.
+3. No Firebase Console, confira a coleção `requests`.
+4. Abra `index.html#dj` para ver o painel do DJ em tempo real.
 
-- `index.html`
-- `style.css`
-- `script.js`
-- `assets/hero-beegod-v2.png`
+## Coleções usadas
+- `requests`: pedidos de música.
+- `dedications`: dedicatórias.
+- `support`: registros de apoio/Pix copiado.
+- `users`: reservado para login/admin futuro.
 
-## Publicar no GitHub Pages
+## Observação
+As regras do Firestore estão públicas apenas para desenvolvimento. Antes de usar oficialmente em evento, protegeremos com autenticação.
 
-1. Crie um repositório novo: `beegod-connect-v2`
-2. Faça upload de todos os arquivos mantendo a pasta `assets`
-3. Vá em Settings → Pages
-4. Source: Deploy from branch
-5. Branch: main / root
-6. Save
+## Painel do DJ
 
-## Frase de cultura
+Abra `admin.html` para acessar o painel do DJ.
 
-404 motivos para não desistir nunca.
+Senha inicial: `beegod2026`
+
+O painel lê em tempo real as coleções:
+- `requests`
+- `dedications`
+- `support`
+
+Ações disponíveis:
+- Aceitar
+- Tocada
+- Recusar
