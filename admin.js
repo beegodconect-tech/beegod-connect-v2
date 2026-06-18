@@ -10,58 +10,6 @@ let unsubscribers = [];
 
 const $ = (selector) => document.querySelector(selector);
 
-const safe = (value) =>
-  String(value ?? '').replace(/[&<>'"]/g, (char) => ({
-    '&': '&amp;',
-    '<': '&lt;',
-    '>': '&gt;',
-    "'": '&#39;',
-    '"': '&quot;'
-  }[char]));
-
-function isFirebaseReady() {
-  return !!(
-    window.firebaseConfig &&
-    window.firebaseConfig.apiKey &&
-    window.firebaseConfig.projectId &&
-    window.firebase
-  );
-}
-
-function timestampOf(item) {
-  return item.createdAt?.toMillis?.() || Date.parse(item.createdAtLocal || '') || 0;
-}
-
-function normalizeStatus(status) {
-  if (status === 'played') return 'tocado';
-  if (status === 'rejected') return 'recusado';
-  if (status === 'accepted') return 'aceito';
-  return status || 'pendente';
-}
-
-function toFirebaseStatus(status) {
-  if (status === 'tocado') return 'played';
-  if (status === 'recusado') return 'rejected';
-  if (status === 'aceito') return 'accepted';
-  return status;
-}
-
-function normalizeText(value) {
-  return String(value || '')
-    .trim()
-    .toLowerCase()
-    .normalize('NFD')
-    .replace(/[\u0300-\u036f]/g, '');
-}
-
-function buildLibraryId(artist, title) {
-  const raw = `${artist || 'artista'}-${title || 'musica'}`;
-  return normalizeText(raw)
-    .replace(/[^a-z0-9]+/g, '-')
-    .replace(/^-+|-+$/g, '')
-    .slice(0, 120) || `music-${Date.now()}`;
-}
-
 function splitArtistAndTitle(item) {
   const song = String(item.song || '').trim();
   const artist = String(item.artist || item.artistName || '').trim();
