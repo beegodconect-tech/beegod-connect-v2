@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BeeGod Connect V2</title>
+  <meta name="description" content="BeeGod Connect: peça músicas, dedique momentos e apoie o artista." />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app">
+    <header class="hero">
+      <nav class="topbar">
+        <div class="brand-text">BEEGOD<br><span>CONNECT</span> <small>V2</small></div>
+        <div class="langs" aria-label="Language selector">
+          <button class="lang active" data-lang="pt">PT</button>
+          <button class="lang" data-lang="en">EN</button>
+          <button class="lang" data-lang="es">ES</button>
+        </div>
+      </nav>
+
+      <div class="hero-content">
+        <p class="eyebrow" data-i18n="eyebrow">Sistema de experiência musical</p>
+        <h1>BEEGOD<br><span>CONNECT</span> <em>V2</em></h1>
+        <p class="subtitle" data-i18n="subtitle">Conecte-se. Peça. Dedique. Curta.</p>
+        <p class="created" data-i18n="created">A música cria momentos. BeeGod cria experiências.</p>
+        <div class="hero-actions">
+          <a class="btn primary" href="#actions" data-i18n="start">Entrar na experiência</a>
+          <a class="btn ghost" href="#about" data-i18n="aboutBtn">Sobre o DJ BeeGod</a>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section id="actions" class="section">
+        <div class="section-title">
+          <span></span>
+          <h2 data-i18n="what">O que você quer fazer?</h2>
+        </div>
+
+        <div class="cards">
+          <button class="card" data-open="song"><i>♪</i><strong data-i18n="cardSong">Pedir música</strong><p data-i18n="cardSongText">Escolha sua música e participe do set.</p></button>
+          <button class="card" data-open="dedication"><i>♡</i><strong data-i18n="cardDedicate">Dedicar uma música</strong><p data-i18n="cardDedicateText">Surpreenda alguém com uma dedicatória.</p></button>
+          <button class="card" data-open="pix"><i>$</i><strong data-i18n="cardPix">Pix / Couvert</strong><p data-i18n="cardPixText">Apoie o artista e mantenha a experiência acontecendo.</p></button>
+          <a class="card" id="whatsappLink" target="_blank" rel="noopener"><i>☏</i><strong>WhatsApp</strong><p data-i18n="cardWhats">Fale diretamente com a equipe.</p></a>
+          <a class="card" href="https://www.instagram.com/beegod_society" target="_blank" rel="noopener"><i>◎</i><strong>Instagram</strong><p data-i18n="cardInsta">Acompanhe bastidores e próximos eventos.</p></a>
+          <button class="card" data-open="gallery"><i>▧</i><strong data-i18n="cardGallery">Galeria</strong><p data-i18n="cardGalleryText">Veja os melhores momentos da noite.</p></button>
+          <button class="card" data-open="agenda"><i>□</i><strong data-i18n="cardAgenda">Agenda</strong><p data-i18n="cardAgendaText">Confira os próximos eventos do BeeGod.</p></button>
+          <button class="card" data-open="drinks"><i>♢</i><strong>BeeGod Drinks</strong><p data-i18n="cardDrinks">Conheça os drinks oficiais da noite.</p></button>
+          <button class="card" data-open="dj"><i>☻</i><strong data-i18n="cardDJ">Sobre o DJ</strong><p data-i18n="cardDJText">Conheça a história do BeeGod.</p></button>
+          <button class="card" data-open="review"><i>★</i><strong data-i18n="cardReview">Avalie sua experiência</strong><p data-i18n="cardReviewText">Sua opinião é muito importante.</p></button>
+        </div>
+      </section>
+
+      <section class="section split">
+        <div>
+          <div class="section-title"><span></span><h2 data-i18n="howTitle">Como funciona</h2></div>
+          <div class="steps">
+            <div><b>1</b><strong data-i18n="step1">Escaneie o QR Code</strong><p data-i18n="step1Text">Você está no lugar certo.</p></div>
+            <div><b>2</b><strong data-i18n="step2">Escolha o que quer fazer</strong><p data-i18n="step2Text">Navegue pelas opções.</p></div>
+            <div><b>3</b><strong data-i18n="step3">Envie sua mensagem</strong><p data-i18n="step3Text">Sua participação faz a diferença.</p></div>
+            <div><b>4</b><strong data-i18n="step4">Curta a experiência</strong><p data-i18n="step4Text">A música conecta tudo.</p></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="djPanel" class="section panel hidden">
+        <div class="section-title"><span></span><h2>🎧 Painel do DJ</h2></div>
+        <p class="muted" data-i18n="panelHelp">Pedidos salvos neste navegador para teste MVP.</p>
+        <div id="requests" class="request-list"></div>
+        <button class="btn danger" id="clearRequests" data-i18n="clear">Limpar fila</button>
+      </section>
+
+      <section id="about" class="section about">
+        <h2 data-i18n="aboutTitle">Quem é Andrei Pires?</h2>
+        <p data-i18n="aboutText1">Um artista movido pela ideia de transformar música em experiência. O BeeGod Connect nasceu para aproximar pessoas através da música, criando momentos únicos em restaurantes, casamentos e eventos particulares.</p>
+        <p data-i18n="aboutText2">Mais do que uma apresentação, cada noite pode contar uma história.</p>
+      </section>
+    </main>
+
+    <footer>
+      <div class="footer-brand">BEEGOD <span>CONNECT</span></div>
+      <blockquote data-i18n="quote">A música conecta pessoas. A experiência cria memórias.</blockquote>
+      <p class="easter">404 motivos para não desistir nunca.</p>
+      <p>© <span id="year"></span> BeeGod Society • Created by Andrei Pires</p>
+    </footer>
+  </div>
+
+  <div class="modal hidden" id="modal">
+    <div class="modal-card">
+      <button class="close" id="closeModal">×</button>
+      <div id="modalContent"></div>
+    </div>
+  </div>
+
+  <template id="formTemplate">
+    <h2 id="formTitle"></h2>
+    <form id="requestForm">
+      <label><span data-i18n-form="name">Seu nome</span><input name="name" required placeholder="Ex: Andrei" /></label>
+      <label><span data-i18n-form="song">Música ou artista</span><input name="song" required placeholder="Ex: Seu Jorge, Bruno Mars" /></label>
+      <label id="dedicationWrap"><span data-i18n-form="message">Mensagem / dedicatória</span><textarea name="message" placeholder="Ex: Feliz aniversário, meu amor!"></textarea></label>
+      <button class="btn primary full" type="submit" data-i18n-form="send">Enviar pedido</button>
+    </form>
+  </template>
+
+  <script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore-compat.js"></script>
+  <script src="../firebase-config.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
