@@ -202,7 +202,6 @@ $('#clearRequests').onclick = () => {
 };
 $('#year').textContent = new Date().getFullYear();
 applyLang();
-if (location.hash === '#dj' || new URLSearchParams(location.search).get('admin') === '1') $('#djPanel').classList.remove('hidden');
 listenRequests();
 
 window.copyPix = copyPix;
