@@ -107,3 +107,60 @@
     min-height:145px;
   }
 }
+
+@media(max-width:560px){
+  .hero{
+    min-height:100vh;
+    padding:18px;
+    background-image:
+      linear-gradient(180deg,rgba(0,0,0,.05) 0%,rgba(0,0,0,.2) 35%,rgba(0,0,0,.78) 72%,#050505 100%),
+      url('assets/hero-beegod-v2.png');
+    background-position:54% top;
+  }
+
+  .hero-content{
+    margin:0 0 42px;
+  }
+
+  .eyebrow{
+    display:none;
+  }
+
+  .hero h1{
+    font-size:46px;
+    line-height:.9;
+    margin-bottom:18px;
+  }
+
+  .subtitle{
+    font-size:0;
+  }
+
+  .subtitle::after{
+    content:"A música começa aqui.";
+    font-size:25px;
+    line-height:1.15;
+    display:block;
+  }
+
+  .created{
+    display:none;
+  }
+
+  .hero-actions{
+    margin-top:24px;
+  }
+
+  .hero-actions .btn.primary{
+    font-size:0;
+  }git push origin main
+
+  .hero-actions .btn.primary::after{
+    content:"Entrar";
+    font-size:18px;
+  }
+
+  .hero-actions .btn.ghost{
+    opacity:.82;
+  }
+}
