@@ -1,0 +1,159 @@
+:root{
+  --bg:#0f1117;
+  --panel:#171b24;
+  --panel-2:#1e2430;
+  --border:#2c3444;
+  --gold:#f3d36a;
+  --text:#f5f5f5;
+  --muted:#a7afbd;
+  --radius:22px;
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:Inter,system-ui,sans-serif;
+}
+
+.dashboard-shell{
+  width:min(1400px,92%);
+  margin:40px auto;
+}
+
+.dashboard-hero{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:40px;
+
+  background:var(--panel);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+
+  padding:50px;
+}
+
+.eyebrow{
+  color:var(--gold);
+  letter-spacing:.18em;
+  font-size:.8rem;
+  margin-bottom:12px;
+}
+
+h1{
+  font-size:3.5rem;
+  margin-bottom:12px;
+}
+
+.subtitle{
+  color:var(--muted);
+  font-size:1.1rem;
+}
+
+.hero-actions{
+  display:flex;
+  gap:16px;
+}
+
+.btn{
+  padding:14px 24px;
+  border-radius:999px;
+  text-decoration:none;
+  font-weight:700;
+  transition:.25s;
+}
+
+.btn.primary{
+  background:var(--gold);
+  color:#111;
+}
+
+.btn.ghost{
+  border:1px solid var(--border);
+  color:white;
+}
+
+.stats-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:22px;
+  margin-top:30px;
+}
+
+.stat-card{
+  background:var(--panel);
+  border:1px solid var(--border);
+  border-radius:18px;
+  padding:28px;
+}
+
+.stat-card span{
+  display:block;
+  color:var(--muted);
+}
+
+.stat-card strong{
+  display:block;
+  font-size:2rem;
+  margin-top:10px;
+}
+
+.section-title{
+  display:flex;
+  align-items:center;
+  gap:14px;
+  margin:45px 0 24px;
+}
+
+.section-title span{
+  width:6px;
+  height:30px;
+  background:var(--gold);
+  border-radius:999px;
+}
+
+.module-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:22px;
+}
+
+.module-card{
+  display:block;
+  text-decoration:none;
+  color:inherit;
+
+  background:var(--panel);
+  border:1px solid var(--border);
+  border-radius:20px;
+
+  padding:28px;
+
+  transition:.25s;
+}
+
+.module-card:hover{
+  transform:translateY(-6px);
+  border-color:var(--gold);
+}
+
+.module-card strong{
+  display:block;
+  font-size:1.2rem;
+  margin-bottom:12px;
+}
+
+.module-card p{
+  color:var(--muted);
+  line-height:1.6;
+}
+
+.muted{
+  opacity:.7;
+}
