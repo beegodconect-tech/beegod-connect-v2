@@ -1,6 +1,13 @@
 const PIX = 'djbeegod@gmail.com';
 const WHATSAPP_DJ = '5548996129940';
-const FIREBASE_READY = !!(window.firebaseConfig && window.firebaseConfig.apiKey && window.firebaseConfig.projectId && window.firebase);
+
+const FIREBASE_READY = !!(
+  window.firebaseConfig &&
+  window.firebaseConfig.apiKey &&
+  window.firebaseConfig.projectId &&
+  window.firebase
+);
+
 const COLLECTIONS = {
   song: 'requests',
   dedication: 'dedications',
@@ -18,13 +25,165 @@ if (FIREBASE_READY) {
 
 const dict = {
   pt: {
-    eyebrow: 'Sistema de experiência musical', subtitle: 'Conecte-se. Peça. Dedique. Curta.', created: 'A música cria momentos. BeeGod cria experiências.', start: 'Entrar na experiência', aboutBtn: 'Sobre o DJ BeeGod', what: 'O que você quer fazer?', cardSong: 'Pedir música', cardSongText: 'Escolha sua música e participe do set.', cardDedicate: 'Dedicar uma música', cardDedicateText: 'Surpreenda alguém com uma dedicatória.', cardPix: 'Pix / Couvert', cardPixText: 'Apoie o artista e mantenha a experiência acontecendo.', cardWhats: 'Fale diretamente com a equipe.', cardInsta: 'Acompanhe bastidores e próximos eventos.', cardGallery: 'Galeria', cardGalleryText: 'Veja os melhores momentos da noite.', cardAgenda: 'Agenda', cardAgendaText: 'Confira os próximos eventos do BeeGod.', cardDrinks: 'Conheça os drinks oficiais da noite.', cardDJ: 'Sobre o DJ', cardDJText: 'Conheça a história do BeeGod.', cardReview: 'Avalie sua experiência', cardReviewText: 'Sua opinião é muito importante.', howTitle: 'Como funciona', step1: 'Escaneie o QR Code', step1Text: 'Você está no lugar certo.', step2: 'Escolha o que quer fazer', step2Text: 'Navegue pelas opções.', step3: 'Envie sua mensagem', step3Text: 'Sua participação faz a diferença.', step4: 'Curta a experiência', step4Text: 'A música conecta tudo.', panelHelp: 'Painel conectado ao Firestore em tempo real.', clear: 'Limpar fila local', aboutTitle: 'Quem é Andrei Pires?', aboutText1: 'Um artista movido pela ideia de transformar música em experiência. O BeeGod Connect nasceu para aproximar pessoas através da música, criando momentos únicos em restaurantes, casamentos e eventos particulares.', aboutText2: 'Mais do que uma apresentação, cada noite pode contar uma história.', quote: 'A música conecta pessoas. A experiência cria memórias.', formSong: 'Pedir música', formDed: 'Dedicar uma música', sent: 'Enviado! Sua solicitação entrou no painel do DJ.'
+    eyebrow: 'Sistema de experiência musical',
+    subtitle: 'Sua música, em um toque.',
+    created: 'A música cria momentos. BeeGod cria experiências.',
+    start: 'Entrar na experiência',
+    aboutBtn: 'Sobre o DJ BeeGod',
+    what: 'O que você quer fazer?',
+    cardSong: 'Pedir música',
+    cardSongText: 'Escolha sua música e participe do set.',
+    cardDedicate: 'Dedicar uma música',
+    cardDedicateText: 'Surpreenda alguém com uma dedicatória.',
+    cardPix: 'Pix / Couvert',
+    cardPixText: 'Apoie o artista e mantenha a experiência acontecendo.',
+    cardWhats: 'Fale diretamente com a equipe.',
+    cardInsta: 'Acompanhe bastidores e próximos eventos.',
+    cardGallery: 'Galeria',
+    cardGalleryText: 'Veja os melhores momentos da noite.',
+    cardAgenda: 'Agenda',
+    cardAgendaText: 'Confira os próximos eventos do BeeGod.',
+    cardDrinks: 'Conheça os drinks oficiais da noite.',
+    cardDJ: 'Sobre o DJ',
+    cardDJText: 'Conheça a história do BeeGod.',
+    cardReview: 'Avalie sua experiência',
+    cardReviewText: 'Sua opinião é muito importante.',
+    howTitle: 'Como funciona',
+    step1: 'Escaneie o QR Code',
+    step1Text: 'Você está no lugar certo.',
+    step2: 'Escolha o que quer fazer',
+    step2Text: 'Navegue pelas opções.',
+    step3: 'Envie sua mensagem',
+    step3Text: 'Sua participação faz a diferença.',
+    step4: 'Curta a experiência',
+    step4Text: 'A música conecta tudo.',
+    panelHelp: 'Painel conectado ao Firestore em tempo real.',
+    clear: 'Limpar fila local',
+    aboutTitle: 'Quem é Andrei Pires?',
+    aboutText1: 'Um artista movido pela ideia de transformar música em experiência. O BeeGod Connect nasceu para aproximar pessoas através da música, criando momentos únicos em restaurantes, casamentos e eventos particulares.',
+    aboutText2: 'Mais do que uma apresentação, cada noite pode contar uma história.',
+    quote: 'A música conecta pessoas. A experiência cria memórias.',
+    formSong: 'Pedir música',
+    formDed: 'Dedicar uma música',
+    sent: 'Pedido recebido! Sua música entrou no painel do DJ.',
+    supportTitle: 'Pedido recebido! 🎵',
+    supportText: 'Sua música já entrou na fila do DJ.',
+    supportQuestion: 'Gostaria de apoiar a experiência?',
+    supportDescription: 'O BeeGod Connect existe graças ao apoio de pessoas que acreditam na música.',
+    supportButton: '💛 Apoiar a experiência',
+    supportLater: 'Continuar curtindo',
+    pixTitle: 'Apoiar a experiência',
+    pixText: 'Copie a chave Pix abaixo e fortaleça essa experiência.',
+    pixCopy: 'Copiar chave Pix',
+    pixCopied: 'Pix copiado! Obrigado por apoiar a experiência BeeGod Connect. 🐝'
   },
+
   en: {
-    eyebrow: 'Music experience system', subtitle: 'Connect. Request. Dedicate. Enjoy.', created: 'Music creates moments. BeeGod creates experiences.', start: 'Enter the experience', aboutBtn: 'About DJ BeeGod', what: 'What do you want to do?', cardSong: 'Request a song', cardSongText: 'Choose your song and join the set.', cardDedicate: 'Dedicate a song', cardDedicateText: 'Surprise someone with a dedication.', cardPix: 'Tip / Cover', cardPixText: 'Support the artist and keep the experience alive.', cardWhats: 'Talk directly to the team.', cardInsta: 'Follow backstage and upcoming events.', cardGallery: 'Gallery', cardGalleryText: 'See the best moments of the night.', cardAgenda: 'Schedule', cardAgendaText: 'Check BeeGod upcoming events.', cardDrinks: 'Discover the official drinks of the night.', cardDJ: 'About the DJ', cardDJText: 'Discover BeeGod’s story.', cardReview: 'Rate your experience', cardReviewText: 'Your opinion matters to us.', howTitle: 'How it works', step1: 'Scan the QR Code', step1Text: 'You are in the right place.', step2: 'Choose what to do', step2Text: 'Navigate through the options.', step3: 'Send your message', step3Text: 'Your participation makes a difference.', step4: 'Enjoy the experience', step4Text: 'Music connects everything.', panelHelp: 'Panel connected to Firestore in real time.', clear: 'Clear local queue', aboutTitle: 'Who is Andrei Pires?', aboutText1: 'An artist moved by the idea of turning music into experience. BeeGod Connect was born to bring people closer through music.', aboutText2: 'More than a performance, every night can tell a story.', quote: 'Music connects people. Experience creates memories.', formSong: 'Request a song', formDed: 'Dedicate a song', sent: 'Sent! Your request entered the DJ panel.'
+    eyebrow: 'Music experience system',
+    subtitle: 'Your song, one tap away.',
+    created: 'Music creates moments. BeeGod creates experiences.',
+    start: 'Enter the experience',
+    aboutBtn: 'About DJ BeeGod',
+    what: 'What do you want to do?',
+    cardSong: 'Request a song',
+    cardSongText: 'Choose your song and join the set.',
+    cardDedicate: 'Dedicate a song',
+    cardDedicateText: 'Surprise someone with a dedication.',
+    cardPix: 'Tip / Cover',
+    cardPixText: 'Support the artist and keep the experience alive.',
+    cardWhats: 'Talk directly to the team.',
+    cardInsta: 'Follow backstage and upcoming events.',
+    cardGallery: 'Gallery',
+    cardGalleryText: 'See the best moments of the night.',
+    cardAgenda: 'Schedule',
+    cardAgendaText: 'Check BeeGod upcoming events.',
+    cardDrinks: 'Discover the official drinks of the night.',
+    cardDJ: 'About the DJ',
+    cardDJText: 'Discover BeeGod’s story.',
+    cardReview: 'Rate your experience',
+    cardReviewText: 'Your opinion matters to us.',
+    howTitle: 'How it works',
+    step1: 'Scan the QR Code',
+    step1Text: 'You are in the right place.',
+    step2: 'Choose what to do',
+    step2Text: 'Navigate through the options.',
+    step3: 'Send your message',
+    step3Text: 'Your participation makes a difference.',
+    step4: 'Enjoy the experience',
+    step4Text: 'Music connects everything.',
+    panelHelp: 'Panel connected to Firestore in real time.',
+    clear: 'Clear local queue',
+    aboutTitle: 'Who is Andrei Pires?',
+    aboutText1: 'An artist moved by the idea of turning music into experience. BeeGod Connect was born to bring people closer through music.',
+    aboutText2: 'More than a performance, every night can tell a story.',
+    quote: 'Music connects people. Experience creates memories.',
+    formSong: 'Request a song',
+    formDed: 'Dedicate a song',
+    sent: 'Request received! Your request entered the DJ panel.',
+    supportTitle: 'Request received! 🎵',
+    supportText: 'Your song is now in the DJ queue.',
+    supportQuestion: 'Would you like to support the experience?',
+    supportDescription: 'BeeGod Connect exists thanks to people who believe in music.',
+    supportButton: '💛 Support the experience',
+    supportLater: 'Keep enjoying',
+    pixTitle: 'Support the experience',
+    pixText: 'Copy the Pix key below and support this experience.',
+    pixCopy: 'Copy Pix key',
+    pixCopied: 'Pix copied! Thank you for supporting BeeGod Connect. 🐝'
   },
+
   es: {
-    eyebrow: 'Sistema de experiencia musical', subtitle: 'Conéctate. Pide. Dedica. Disfruta.', created: 'La música crea momentos. BeeGod crea experiencias.', start: 'Entrar en la experiencia', aboutBtn: 'Sobre DJ BeeGod', what: '¿Qué quieres hacer?', cardSong: 'Pedir canción', cardSongText: 'Elige tu música y participa del set.', cardDedicate: 'Dedicar una canción', cardDedicateText: 'Sorprende a alguien con una dedicatoria.', cardPix: 'Propina / Cubierto', cardPixText: 'Apoya al artista y mantiene viva la experiencia.', cardWhats: 'Habla directamente con el equipo.', cardInsta: 'Sigue bastidores y próximos eventos.', cardGallery: 'Galería', cardGalleryText: 'Mira los mejores momentos de la noche.', cardAgenda: 'Agenda', cardAgendaText: 'Consulta los próximos eventos de BeeGod.', cardDrinks: 'Conoce los tragos oficiales de la noche.', cardDJ: 'Sobre el DJ', cardDJText: 'Conoce la historia de BeeGod.', cardReview: 'Evalúa tu experiencia', cardReviewText: 'Tu opinión es muy importante.', howTitle: 'Cómo funciona', step1: 'Escanea el QR Code', step1Text: 'Estás en el lugar correcto.', step2: 'Elige qué hacer', step2Text: 'Navega por las opciones.', step3: 'Envía tu mensaje', step3Text: 'Tu participación marca la diferencia.', step4: 'Disfruta la experiencia', step4Text: 'La música lo conecta todo.', panelHelp: 'Panel conectado a Firestore en tiempo real.', clear: 'Limpiar fila local', aboutTitle: '¿Quién es Andrei Pires?', aboutText1: 'Un artista movido por la idea de transformar música en experiencia.', aboutText2: 'Más que una presentación, cada noche puede contar una historia.', quote: 'La música conecta personas. La experiencia crea memorias.', formSong: 'Pedir canción', formDed: 'Dedicar una canción', sent: '¡Enviado! Tu solicitud entró en el panel del DJ.'
+    eyebrow: 'Sistema de experiencia musical',
+    subtitle: 'Tu música, con un toque.',
+    created: 'La música crea momentos. BeeGod crea experiencias.',
+    start: 'Entrar en la experiencia',
+    aboutBtn: 'Sobre DJ BeeGod',
+    what: '¿Qué quieres hacer?',
+    cardSong: 'Pedir canción',
+    cardSongText: 'Elige tu música y participa del set.',
+    cardDedicate: 'Dedicar una canción',
+    cardDedicateText: 'Sorprende a alguien con una dedicatoria.',
+    cardPix: 'Propina / Cubierto',
+    cardPixText: 'Apoya al artista y mantiene viva la experiencia.',
+    cardWhats: 'Habla directamente con el equipo.',
+    cardInsta: 'Sigue bastidores y próximos eventos.',
+    cardGallery: 'Galería',
+    cardGalleryText: 'Mira los mejores momentos de la noche.',
+    cardAgenda: 'Agenda',
+    cardAgendaText: 'Consulta los próximos eventos de BeeGod.',
+    cardDrinks: 'Conoce los tragos oficiales de la noche.',
+    cardDJ: 'Sobre el DJ',
+    cardDJText: 'Conoce la historia de BeeGod.',
+    cardReview: 'Evalúa tu experiencia',
+    cardReviewText: 'Tu opinión es muy importante.',
+    howTitle: 'Cómo funciona',
+    step1: 'Escanea el QR Code',
+    step1Text: 'Estás en el lugar correcto.',
+    step2: 'Elige qué hacer',
+    step2Text: 'Navega por las opciones.',
+    step3: 'Envía tu mensaje',
+    step3Text: 'Tu participación marca la diferencia.',
+    step4: 'Disfruta la experiencia',
+    step4Text: 'La música lo conecta todo.',
+    panelHelp: 'Panel conectado a Firestore en tiempo real.',
+    clear: 'Limpiar fila local',
+    aboutTitle: '¿Quién es Andrei Pires?',
+    aboutText1: 'Un artista movido por la idea de transformar música en experiencia.',
+    aboutText2: 'Más que una presentación, cada noche puede contar una historia.',
+    quote: 'La música conecta personas. La experiencia crea memorias.',
+    formSong: 'Pedir canción',
+    formDed: 'Dedicar una canción',
+    sent: '¡Pedido recibido! Tu solicitud entró en el panel del DJ.',
+    supportTitle: '¡Pedido recibido! 🎵',
+    supportText: 'Tu música ya está en la fila del DJ.',
+    supportQuestion: '¿Te gustaría apoyar la experiencia?',
+    supportDescription: 'BeeGod Connect existe gracias al apoyo de personas que creen en la música.',
+    supportButton: '💛 Apoyar la experiencia',
+    supportLater: 'Seguir disfrutando',
+    pixTitle: 'Apoyar la experiencia',
+    pixText: 'Copia la clave Pix abajo y fortalece esta experiencia.',
+    pixCopy: 'Copiar clave Pix',
+    pixCopied: '¡Pix copiado! Gracias por apoyar BeeGod Connect. 🐝'
   }
 };
 
@@ -40,8 +199,11 @@ function applyLang() {
   document.documentElement.lang = lang === 'pt' ? 'pt-BR' : lang;
   $$('[data-i18n]').forEach(el => el.textContent = t(el.dataset.i18n));
   $$('.lang').forEach(b => b.classList.toggle('active', b.dataset.lang === lang));
+
   const whats = $('#whatsappLink');
-  if (whats) whats.href = `https://wa.me/${WHATSAPP_DJ}?text=${encodeURIComponent('Olá, BeeGod! Vim pelo BeeGod Connect.')}`;
+  if (whats) {
+    whats.href = `https://wa.me/${WHATSAPP_DJ}?text=${encodeURIComponent('Olá, BeeGod! Vim pelo BeeGod Connect.')}`;
+  }
 }
 
 function getLocalRequests() {
@@ -56,6 +218,7 @@ function saveLocalRequests(items) {
 async function createItem(item) {
   const type = item.type || 'song';
   const collectionName = COLLECTIONS[type] || 'requests';
+
   const clean = {
     ...item,
     status: 'pendente',
@@ -65,15 +228,24 @@ async function createItem(item) {
   };
 
   if (FIREBASE_READY) {
-    await db.collection(collectionName).add({ ...clean, createdAt: firebase.firestore.FieldValue.serverTimestamp() });
+    await db.collection(collectionName).add({
+      ...clean,
+      createdAt: firebase.firestore.FieldValue.serverTimestamp()
+    });
   } else {
-    saveLocalRequests([{ ...clean, id: Date.now().toString(), collectionName }, ...getLocalRequests()]);
+    saveLocalRequests([
+      { ...clean, id: Date.now().toString(), collectionName },
+      ...getLocalRequests()
+    ]);
   }
 }
 
 async function updateRequestStatus(id, status, collectionName = 'requests') {
   if (FIREBASE_READY) {
-    await db.collection(collectionName).doc(id).update({ status, updatedAt: firebase.firestore.FieldValue.serverTimestamp() });
+    await db.collection(collectionName).doc(id).update({
+      status,
+      updatedAt: firebase.firestore.FieldValue.serverTimestamp()
+    });
   } else {
     saveLocalRequests(getLocalRequests().map(i => i.id === id ? { ...i, status } : i));
   }
@@ -90,12 +262,16 @@ async function removeRequest(id, collectionName = 'requests') {
 function listenCollection(collectionName) {
   return db.collection(collectionName).orderBy('createdAt', 'desc').onSnapshot(snap => {
     const incoming = snap.docs.map(d => ({ id: d.id, collectionName, ...d.data() }));
-    liveItems = [...liveItems.filter(i => i.collectionName !== collectionName), ...incoming]
-      .sort((a, b) => {
-        const ad = a.createdAt?.toMillis?.() || Date.parse(a.createdAtLocal || 0) || 0;
-        const bd = b.createdAt?.toMillis?.() || Date.parse(b.createdAtLocal || 0) || 0;
-        return bd - ad;
-      });
+
+    liveItems = [
+      ...liveItems.filter(i => i.collectionName !== collectionName),
+      ...incoming
+    ].sort((a, b) => {
+      const ad = a.createdAt?.toMillis?.() || Date.parse(a.createdAtLocal || 0) || 0;
+      const bd = b.createdAt?.toMillis?.() || Date.parse(b.createdAtLocal || 0) || 0;
+      return bd - ad;
+    });
+
     renderRequests(liveItems);
   }, err => {
     console.error(`Erro lendo ${collectionName}`, err);
@@ -112,39 +288,94 @@ function listenRequests() {
   }
 }
 
+function openSupportInvite() {
+  const c = $('#modalContent');
+
+  c.innerHTML = `
+    <h2>${t('supportTitle')}</h2>
+    <p>${t('supportText')}</p>
+    <p>${t('supportQuestion')}</p>
+    <p>${t('supportDescription')}</p>
+
+    <div class="btns">
+      <button class="btn primary full" id="supportNowBtn">${t('supportButton')}</button>
+      <button class="btn ghost full" id="supportLaterBtn">${t('supportLater')}</button>
+    </div>
+  `;
+
+  $('#supportNowBtn').onclick = () => openPixSupport();
+  $('#supportLaterBtn').onclick = () => $('#modal').classList.add('hidden');
+
+  $('#modal').classList.remove('hidden');
+}
+
+function openPixSupport() {
+  const c = $('#modalContent');
+
+  c.innerHTML = `
+    <h2>${t('pixTitle')}</h2>
+    <p>${t('pixText')}</p>
+
+    <div class="pixbox">
+      <strong>Pix:</strong><br>
+      ${PIX}
+    </div>
+
+    <button class="btn primary full" id="copyPixBtn">${t('pixCopy')}</button>
+    <button class="btn ghost full" id="closePixBtn">${t('supportLater')}</button>
+  `;
+
+  $('#copyPixBtn').onclick = copyPix;
+  $('#closePixBtn').onclick = () => $('#modal').classList.add('hidden');
+}
+
 function openModal(type) {
   const c = $('#modalContent');
 
   if (type === 'song' || type === 'dedication') {
     const temp = $('#formTemplate').content.cloneNode(true);
+
     c.innerHTML = '';
     c.appendChild(temp);
+
     $('#formTitle').textContent = type === 'song' ? t('formSong') : t('formDed');
-    if (type === 'song') $('#dedicationWrap').style.display = 'none';
+
+    if (type === 'song') {
+      $('#dedicationWrap').style.display = 'none';
+    }
 
     $('#requestForm').onsubmit = async (e) => {
       e.preventDefault();
+
       const data = Object.fromEntries(new FormData(e.target).entries());
+
       const item = {
         type,
         name: data.name.trim(),
         song: data.song.trim(),
         message: (data.message || '').trim()
       };
+
       await createItem(item);
-      alert(t('sent'));
-      $('#modal').classList.add('hidden');
+
+      openSupportInvite();
     };
+
   } else if (type === 'pix') {
-    c.innerHTML = `<h2>${t('cardPix')}</h2><p>${t('cardPixText')}</p><div class="pixbox"><strong>Pix:</strong><br>${PIX}</div><button class="btn primary full" onclick="copyPix()">Copiar chave Pix</button>`;
+    openPixSupport();
+
   } else if (type === 'dj') {
     c.innerHTML = `<h2>${t('aboutTitle')}</h2><p>${t('aboutText1')}</p><p>${t('aboutText2')}</p>`;
+
   } else if (type === 'gallery') {
     c.innerHTML = '<h2>Galeria</h2><p>Em breve: fotos oficiais dos eventos BeeGod.</p>';
+
   } else if (type === 'agenda') {
     c.innerHTML = '<h2>Agenda</h2><p>Em breve: próximos eventos e residências.</p>';
+
   } else if (type === 'drinks') {
     c.innerHTML = '<h2>BeeGod Drinks</h2><p>Em breve: carta de drinks oficiais da noite.</p>';
+
   } else if (type === 'review') {
     c.innerHTML = '<h2>Avalie sua experiência</h2><p>Em breve: avaliação rápida do evento.</p>';
   }
@@ -159,6 +390,7 @@ function renderRequests(items = getLocalRequests()) {
   box.innerHTML = items.length ? items.map(i => {
     const status = i.status || 'pendente';
     const kind = i.collectionName === 'dedications' || i.type === 'dedication' ? 'Dedicatória' : 'Pedido';
+
     return `<div class="request">
       <strong>${kind}: ${safe(i.song)}</strong><br>
       <small>${safe(i.name)} • ${safe(i.time || 'agora')} • ${safe(status)}</small>
@@ -171,36 +403,69 @@ function renderRequests(items = getLocalRequests()) {
     </div>`;
   }).join('') : '<p class="muted">Nenhum pedido ainda.</p>';
 
-  $$('[data-status]').forEach(b => b.onclick = () => updateRequestStatus(b.dataset.id, b.dataset.status, b.dataset.col));
-  $$('[data-delete]').forEach(b => b.onclick = () => removeRequest(b.dataset.delete, b.dataset.col));
+  $$('[data-status]').forEach(b => {
+    b.onclick = () => updateRequestStatus(b.dataset.id, b.dataset.status, b.dataset.col);
+  });
+
+  $$('[data-delete]').forEach(b => {
+    b.onclick = () => removeRequest(b.dataset.delete, b.dataset.col);
+  });
 }
 
 async function copyPix() {
-  await navigator.clipboard?.writeText(PIX);
   try {
-    await createItem({ type: 'support', name: 'Visitante', song: 'Pix copiado', message: `Chave Pix copiada: ${PIX}` });
+    await navigator.clipboard?.writeText(PIX);
+
+    await createItem({
+      type: 'support',
+      name: 'Visitante',
+      song: 'Pix copiado',
+      message: `Chave Pix copiada: ${PIX}`
+    });
+
+    const c = $('#modalContent');
+
+    c.innerHTML = `
+      <h2>💛</h2>
+      <p>${t('pixCopied')}</p>
+      <button class="btn primary full" id="finishSupportBtn">${t('supportLater')}</button>
+    `;
+
+    $('#finishSupportBtn').onclick = () => $('#modal').classList.add('hidden');
+
   } catch (err) {
-    console.warn('Não foi possível registrar o apoio:', err);
+    console.warn('Não foi possível copiar o Pix:', err);
+    alert('Pix: ' + PIX);
   }
-  alert('Pix copiado: ' + PIX);
 }
 
-$$('.lang').forEach(b => b.onclick = () => {
-  lang = b.dataset.lang;
-  localStorage.setItem('beegod_lang', lang);
-  applyLang();
+$$('.lang').forEach(b => {
+  b.onclick = () => {
+    lang = b.dataset.lang;
+    localStorage.setItem('beegod_lang', lang);
+    applyLang();
+  };
 });
 
-$$('[data-open]').forEach(b => b.onclick = () => openModal(b.dataset.open));
+$$('[data-open]').forEach(b => {
+  b.onclick = () => openModal(b.dataset.open);
+});
+
 $('#closeModal').onclick = () => $('#modal').classList.add('hidden');
-$('#modal').onclick = e => { if (e.target.id === 'modal') $('#modal').classList.add('hidden'); };
+
+$('#modal').onclick = e => {
+  if (e.target.id === 'modal') $('#modal').classList.add('hidden');
+};
+
 $('#clearRequests').onclick = () => {
   if (confirm('Limpar apenas a fila local deste navegador?')) {
     localStorage.removeItem('beegod_requests');
     renderRequests([]);
   }
 };
+
 $('#year').textContent = new Date().getFullYear();
+
 applyLang();
 listenRequests();
 
