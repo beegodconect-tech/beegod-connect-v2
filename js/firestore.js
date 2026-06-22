@@ -1,11 +1,8 @@
-// BeeGod Connect — Firestore Core
-// Este arquivo centraliza a conexão com Firebase/Firestore para toda a plataforma.
-
-(function () {
+window.BeeGodFirestore = (() => {
   let db = null;
   let initialized = false;
 
-  function isFirebaseReady() {
+  function isReady() {
     return !!(
       window.firebaseConfig &&
       window.firebaseConfig.apiKey &&
@@ -14,10 +11,10 @@
     );
   }
 
-  function initFirestore() {
+  function init() {
     if (initialized && db) return db;
 
-    if (!isFirebaseReady()) {
+    if (!isReady()) {
       console.warn("BeeGod Firestore: Firebase não está pronto.");
       return null;
     }
@@ -30,7 +27,7 @@
       db = firebase.firestore();
       initialized = true;
 
-      console.log("BeeGod Firestore conectado.");
+      console.log("🐝 BeeGod Firestore conectado.");
       return db;
     } catch (error) {
       console.error("Erro ao iniciar Firestore:", error);
@@ -38,19 +35,38 @@
     }
   }
 
-  function getDB() {
-    return db || initFirestore();
+  function listen(collectionName, callback) {
+    const database = init();
+
+    if (!database) return null;
+
+    return database
+      .collection(collectionName)
+      .orderBy("createdAt", "desc")
+      .onSnapshot(
+        (snapshot) => {
+          const items = snapshot.docs.map((doc) => ({
+            id: doc.id,
+            collectionName,
+            ...doc.data()
+          }));
+
+          callback(items);
+        },
+        (error) => {
+          console.error(`Erro ao carregar ${collectionName}:`, error);
+        }
+      );
   }
 
   function serverTimestamp() {
-    if (!window.firebase || !firebase.firestore) return new Date().toISOString();
     return firebase.firestore.FieldValue.serverTimestamp();
   }
 
-  window.BeeGodFirestore = {
-    init: initFirestore,
-    getDB,
+  return {
+    init,
+    listen,
     serverTimestamp,
-    isReady: isFirebaseReady
+    isReady
   };
 })();

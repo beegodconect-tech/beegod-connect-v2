@@ -1,53 +1,70 @@
-window.safe = function safe(value) {
-  return String(value ?? '').replace(/[&<>'"]/g, (char) => ({
-    '&': '&amp;',
-    '<': '&lt;',
-    '>': '&gt;',
-    "'": '&#39;',
-    '"': '&quot;'
-  }[char]));
-};
+window.BeeGodUtils = {
+  safe(value) {
+    return String(value ?? "").replace(/[&<>'"]/g, (char) => ({
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      "'": "&#39;",
+      '"': "&quot;"
+    }[char]));
+  },
 
-window.isFirebaseReady = function isFirebaseReady() {
-  return !!(
-    window.firebaseConfig &&
-    window.firebaseConfig.apiKey &&
-    window.firebaseConfig.projectId &&
-    window.firebase
-  );
-};
+  toDate(item) {
+    if (item?.createdAt?.toDate) return item.createdAt.toDate();
+    if (item?.createdAtLocal) return new Date(item.createdAtLocal);
+    return null;
+  },
 
-window.timestampOf = function timestampOf(item) {
-  return item.createdAt?.toMillis?.() || Date.parse(item.createdAtLocal || '') || 0;
-};
+  isToday(item) {
+    const date = this.toDate(item);
+    if (!date || isNaN(date)) return false;
 
-window.normalizeStatus = function normalizeStatus(status) {
-  if (status === 'played') return 'tocado';
-  if (status === 'rejected') return 'recusado';
-  if (status === 'accepted') return 'aceito';
-  return status || 'pendente';
-};
+    const now = new Date();
 
-window.toFirebaseStatus = function toFirebaseStatus(status) {
-  if (status === 'tocado') return 'played';
-  if (status === 'recusado') return 'rejected';
-  if (status === 'aceito') return 'accepted';
-  return status;
-};
+    return (
+      date.getDate() === now.getDate() &&
+      date.getMonth() === now.getMonth() &&
+      date.getFullYear() === now.getFullYear()
+    );
+  },
 
-window.normalizeText = function normalizeText(value) {
-  return String(value || '')
-    .trim()
-    .toLowerCase()
-    .normalize('NFD')
-    .replace(/[\u0300-\u036f]/g, '');
-};
+  normalizeText(value) {
+    return String(value || "")
+      .trim()
+      .toLowerCase()
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "");
+  },
 
-window.buildLibraryId = function buildLibraryId(artist, title) {
-  const raw = `${artist || 'artista'}-${title || 'musica'}`;
+  normalizeStatus(status) {
+    const value = this.normalizeText(status);
 
-  return normalizeText(raw)
-    .replace(/[^a-z0-9]+/g, '-')
-    .replace(/^-+|-+$/g, '')
-    .slice(0, 120) || `music-${Date.now()}`;
+    if (value === "played") return "tocado";
+    if (value === "accepted") return "aceito";
+    if (value === "rejected") return "recusado";
+
+    return value || "pendente";
+  },
+
+  countBy(items, key) {
+    const map = {};
+
+    items.forEach((item) => {
+      const value = String(item[key] || "").trim();
+      if (!value) return;
+
+      const normalized = this.normalizeText(value);
+
+      if (!map[normalized]) {
+        map[normalized] = {
+          label: value,
+          count: 0
+        };
+      }
+
+      map[normalized].count += 1;
+    });
+
+    return Object.values(map).sort((a, b) => b.count - a.count);
+  }
 };
