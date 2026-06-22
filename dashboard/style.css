@@ -15,6 +15,11 @@
   box-sizing:border-box;
 }
 
+html,body{
+  width:100%;
+  overflow-x:hidden;
+}
+
 body{
   background:var(--bg);
   color:var(--text);
@@ -31,11 +36,9 @@ body{
   justify-content:space-between;
   align-items:center;
   gap:40px;
-
   background:var(--panel);
   border:1px solid var(--border);
   border-radius:var(--radius);
-
   padding:50px;
 }
 
@@ -59,14 +62,19 @@ h1{
 .hero-actions{
   display:flex;
   gap:16px;
+  flex-shrink:0;
 }
 
 .btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
   padding:14px 24px;
   border-radius:999px;
   text-decoration:none;
   font-weight:700;
   transition:.25s;
+  white-space:nowrap;
 }
 
 .btn.primary{
@@ -128,13 +136,10 @@ h1{
   display:block;
   text-decoration:none;
   color:inherit;
-
   background:var(--panel);
   border:1px solid var(--border);
   border-radius:20px;
-
   padding:28px;
-
   transition:.25s;
 }
 
@@ -157,86 +162,88 @@ h1{
 .muted{
   opacity:.7;
 }
-/* Sprint 06 — Etapa 1: Dashboard Responsivo */
 
-@media (max-width: 920px) {
-  .dashboard-shell {
-    padding: 22px;
-    overflow-x: hidden;
+@media(max-width:920px){
+  .dashboard-shell{
+    width:100%;
+    margin:0;
+    padding:22px;
   }
 
-  .hero,
-  .dashboard-hero,
-  .header {
-    width: 100%;
+  .dashboard-hero{
+    flex-direction:column;
+    align-items:stretch;
+    gap:26px;
   }
 
-  .header-actions,
-  .hero-actions {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 12px;
+  .hero-actions{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:12px;
+  }
+
+  .btn{
+    width:100%;
+    white-space:normal;
+    text-align:center;
   }
 
   .stats-grid,
-  .module-grid {
-    grid-template-columns: repeat(2, 1fr);
+  .module-grid{
+    grid-template-columns:repeat(2,1fr);
   }
 }
 
-@media (max-width: 560px) {
-  body {
-    overflow-x: hidden;
+@media(max-width:560px){
+  .dashboard-shell{
+    padding:16px;
   }
 
-  .dashboard-shell {
-    padding: 18px;
+  .dashboard-hero{
+    padding:28px 20px;
+    border-radius:24px;
   }
 
-  .hero,
-  .dashboard-hero,
-  header {
-    padding: 28px 22px;
-    border-radius: 24px;
+  .eyebrow{
+    font-size:.72rem;
+    letter-spacing:.16em;
   }
 
-  .hero h1,
-  header h1 {
-    font-size: 54px;
-    line-height: .9;
-    letter-spacing: -3px;
+  h1{
+    font-size:clamp(44px,16vw,62px);
+    line-height:.9;
+    letter-spacing:-3px;
   }
 
-  .header-actions,
-  .hero-actions {
-    width: 100%;
-    display: grid;
-    grid-template-columns: 1fr;
+  .subtitle{
+    font-size:18px;
+    line-height:1.4;
   }
 
-  .btn,
-  .header-actions a,
-  .hero-actions a {
-    width: 100%;
-    text-align: center;
-    justify-content: center;
+  .hero-actions{
+    grid-template-columns:1fr;
+  }
+
+  .btn{
+    min-height:58px;
+    border-radius:18px;
   }
 
   .stats-grid,
-  .module-grid {
-    grid-template-columns: 1fr;
-    gap: 16px;
+  .module-grid{
+    grid-template-columns:1fr;
+    gap:16px;
   }
 
   .stat-card,
-  .module-card {
-    width: 100%;
-    min-height: 150px;
-    padding: 24px;
+  .module-card{
+    width:100%;
+    min-height:150px;
+    padding:24px;
   }
 
-  .section-title h2 {
-    font-size: 34px;
-    line-height: 1;
+  .section-title h2{
+    font-size:30px;
+    line-height:1.05;
   }
 }
