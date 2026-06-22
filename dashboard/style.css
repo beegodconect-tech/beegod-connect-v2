@@ -157,3 +157,86 @@ h1{
 .muted{
   opacity:.7;
 }
+/* Sprint 06 — Etapa 1: Dashboard Responsivo */
+
+@media (max-width: 920px) {
+  .dashboard-shell {
+    padding: 22px;
+    overflow-x: hidden;
+  }
+
+  .hero,
+  .dashboard-hero,
+  .header {
+    width: 100%;
+  }
+
+  .header-actions,
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .stats-grid,
+  .module-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 560px) {
+  body {
+    overflow-x: hidden;
+  }
+
+  .dashboard-shell {
+    padding: 18px;
+  }
+
+  .hero,
+  .dashboard-hero,
+  header {
+    padding: 28px 22px;
+    border-radius: 24px;
+  }
+
+  .hero h1,
+  header h1 {
+    font-size: 54px;
+    line-height: .9;
+    letter-spacing: -3px;
+  }
+
+  .header-actions,
+  .hero-actions {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .btn,
+  .header-actions a,
+  .hero-actions a {
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+  }
+
+  .stats-grid,
+  .module-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .stat-card,
+  .module-card {
+    width: 100%;
+    min-height: 150px;
+    padding: 24px;
+  }
+
+  .section-title h2 {
+    font-size: 34px;
+    line-height: 1;
+  }
+}
