@@ -9,6 +9,16 @@ window.BeeGodUtils = {
     }[char]));
   },
 
+  isFirebaseReady() {
+    return !!(
+      window.firebase &&
+      window.firebaseConfig &&
+      window.firebaseConfig.apiKey &&
+      window.firebaseConfig.projectId &&
+      window.firebase.firestore
+    );
+  },
+
   toDate(item) {
     if (item?.createdAt?.toDate) return item.createdAt.toDate();
     if (item?.updatedAt?.toDate) return item.updatedAt.toDate();
@@ -66,14 +76,14 @@ window.BeeGodUtils = {
     if (value === "recusado") return "rejected";
     if (value === "pendente") return "pending";
 
-    return status || "pending";
+    return "pending";
   },
 
   countBy(items, key) {
     const map = {};
 
     items.forEach((item) => {
-      const value = String(item[key] || "").trim();
+      const value = String(item?.[key] || "").trim();
       if (!value) return;
 
       const normalized = this.normalizeText(value);
@@ -94,6 +104,7 @@ window.BeeGodUtils = {
 
 /* Compatibilidade global para arquivos antigos */
 window.safe = window.BeeGodUtils.safe.bind(window.BeeGodUtils);
+window.isFirebaseReady = window.BeeGodUtils.isFirebaseReady.bind(window.BeeGodUtils);
 window.toDate = window.BeeGodUtils.toDate.bind(window.BeeGodUtils);
 window.timestampOf = window.BeeGodUtils.timestampOf.bind(window.BeeGodUtils);
 window.isToday = window.BeeGodUtils.isToday.bind(window.BeeGodUtils);
