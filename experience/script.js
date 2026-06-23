@@ -195,6 +195,228 @@ const $$ = (s) => document.querySelectorAll(s);
 const t = (k) => dict[lang][k] || dict.pt[k] || k;
 const safe = (s) => String(s || '').replace(/[&<>'"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' }[c]));
 
+function injectOnboardingStyles() {
+  if ($('#beegodOnboardingStyles')) return;
+
+  const style = document.createElement('style');
+  style.id = 'beegodOnboardingStyles';
+  style.textContent = `
+    .beegod-onboarding{
+      position:fixed;
+      inset:0;
+      z-index:9999;
+      background:
+        linear-gradient(180deg,rgba(0,0,0,.22),rgba(0,0,0,.82)),
+        url('../assets/hero-beegod-v2.png');
+      background-size:cover;
+      background-position:center top;
+      color:#fff8ec;
+      overflow:auto;
+      display:flex;
+      align-items:flex-end;
+      padding:22px;
+    }
+
+    .beegod-onboarding-card{
+      width:100%;
+      max-width:720px;
+      margin:0 auto;
+      background:rgba(5,5,5,.72);
+      border:1px solid rgba(214,168,79,.32);
+      border-radius:28px;
+      padding:28px 22px;
+      backdrop-filter:blur(18px);
+      box-shadow:0 30px 100px rgba(0,0,0,.75);
+      animation:beeFadeUp .55s ease both;
+    }
+
+    .bee-step{
+      display:none;
+    }
+
+    .bee-step.active{
+      display:block;
+    }
+
+    .bee-kicker{
+      color:#f2d27b;
+      text-transform:uppercase;
+      letter-spacing:.18em;
+      font-size:11px;
+      font-weight:900;
+      margin-bottom:12px;
+    }
+
+    .beegod-onboarding h2{
+      font-size:clamp(34px,10vw,64px);
+      line-height:.9;
+      letter-spacing:-.06em;
+      margin:0 0 18px;
+    }
+
+    .beegod-onboarding p{
+      color:rgba(255,248,236,.82);
+      font-size:17px;
+      line-height:1.55;
+      margin:0 0 14px;
+    }
+
+    .bee-list{
+      display:grid;
+      gap:10px;
+      margin:18px 0;
+      color:#fff8ec;
+      font-weight:700;
+    }
+
+    .bee-actions{
+      display:grid;
+      gap:12px;
+      margin-top:24px;
+    }
+
+    .bee-btn{
+      min-height:56px;
+      border:0;
+      border-radius:999px;
+      font-weight:950;
+      cursor:pointer;
+      font-size:15px;
+      padding:14px 20px;
+    }
+
+    .bee-btn.primary{
+      background:linear-gradient(135deg,#f2d27b,#d6a84f);
+      color:#111;
+    }
+
+    .bee-btn.ghost{
+      background:rgba(255,255,255,.08);
+      border:1px solid rgba(214,168,79,.28);
+      color:#fff8ec;
+    }
+
+    .bee-progress{
+      display:flex;
+      gap:8px;
+      margin-top:22px;
+    }
+
+    .bee-dot{
+      height:6px;
+      flex:1;
+      border-radius:999px;
+      background:rgba(255,255,255,.18);
+    }
+
+    .bee-dot.active{
+      background:#f2d27b;
+    }
+
+    @keyframes beeFadeUp{
+      from{opacity:0;transform:translateY(18px)}
+      to{opacity:1;transform:translateY(0)}
+    }
+
+    @media(min-width:760px){
+      .beegod-onboarding{
+        align-items:center;
+        padding:44px;
+      }
+      .beegod-onboarding-card{
+        padding:42px;
+      }
+    }
+  `;
+  document.head.appendChild(style);
+}
+
+function showBeeGodOnboarding() {
+  if (localStorage.getItem('beegod_onboarding_seen') === 'yes') return;
+
+  injectOnboardingStyles();
+
+  const overlay = document.createElement('div');
+  overlay.className = 'beegod-onboarding';
+  overlay.id = 'beegodOnboarding';
+
+  overlay.innerHTML = `
+    <div class="beegod-onboarding-card">
+      <section class="bee-step active" data-step="0">
+        <div class="bee-kicker">BeeGod Connect</div>
+        <h2>Bem-vindo.</h2>
+        <p>Eu sou o <strong>DJ BeeGod</strong>.</p>
+        <p>Enquanto estou atrás da controladora, quero estar sentado aqui com você.</p>
+        <p>Criei essa experiência para que você participe da noite comigo.</p>
+        <div class="bee-actions">
+          <button class="bee-btn primary" data-next>Continuar</button>
+        </div>
+      </section>
+
+      <section class="bee-step" data-step="1">
+        <div class="bee-kicker">A experiência</div>
+        <h2>Sua música, em um toque.</h2>
+        <p>Peça uma música, faça uma dedicatória, conheça quem está tornando essa noite possível e sinta-se parte dela.</p>
+        <p>Aqui, você não é apenas cliente. Você participa da energia da noite.</p>
+        <div class="bee-actions">
+          <button class="bee-btn primary" data-next>Entendi</button>
+        </div>
+      </section>
+
+      <section class="bee-step" data-step="2">
+        <div class="bee-kicker">🌼 Por que BeeGod Connect?</div>
+        <h2>O Efeito Pólen.</h2>
+        <p><strong>Bee</strong> significa abelha. <strong>God</strong> representa algo maior: propósito, conexão e serviço.</p>
+        <p>A abelha não cria a flor, nem o fruto, nem a semente. Ela conecta. Ao levar o pólen de uma flor para outra, torna possível o nascimento de novos frutos.</p>
+        <p>A BeeGod Connect faz exatamente isso.</p>
+        <div class="bee-list">
+          <span>🌱 Novos fãs</span>
+          <span>🌱 Novos contratos</span>
+          <span>🌱 Novas amizades</span>
+          <span>🌱 Novos artistas</span>
+          <span>🌱 Novas oportunidades</span>
+          <span>🌱 Novas histórias</span>
+        </div>
+        <p>Ela não cria o artista. Não cria a música. Não cria o público. Ela conecta todos eles.</p>
+        <div class="bee-actions">
+          <button class="bee-btn primary" data-finish>Entrar na experiência</button>
+          <button class="bee-btn ghost" data-skip>Ver depois</button>
+        </div>
+      </section>
+
+      <div class="bee-progress">
+        <span class="bee-dot active"></span>
+        <span class="bee-dot"></span>
+        <span class="bee-dot"></span>
+      </div>
+    </div>
+  `;
+
+  document.body.appendChild(overlay);
+
+  let step = 0;
+  const steps = overlay.querySelectorAll('.bee-step');
+  const dots = overlay.querySelectorAll('.bee-dot');
+
+  function goToStep(nextStep) {
+    step = nextStep;
+    steps.forEach((el, index) => el.classList.toggle('active', index === step));
+    dots.forEach((el, index) => el.classList.toggle('active', index === step));
+  }
+
+  overlay.querySelectorAll('[data-next]').forEach(btn => {
+    btn.onclick = () => goToStep(Math.min(step + 1, steps.length - 1));
+  });
+
+  function closeOnboarding() {
+    localStorage.setItem('beegod_onboarding_seen', 'yes');
+    overlay.remove();
+  }
+
+  overlay.querySelector('[data-finish]').onclick = closeOnboarding;
+  overlay.querySelector('[data-skip]').onclick = closeOnboarding;
+}
+
 function applyLang() {
   document.documentElement.lang = lang === 'pt' ? 'pt-BR' : lang;
   $$('[data-i18n]').forEach(el => el.textContent = t(el.dataset.i18n));
@@ -468,5 +690,6 @@ $('#year').textContent = new Date().getFullYear();
 
 applyLang();
 listenRequests();
+showBeeGodOnboarding();
 
 window.copyPix = copyPix;
