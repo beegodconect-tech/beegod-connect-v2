@@ -153,12 +153,11 @@ function startFirebase() {
       .onSnapshot((snapshot) => {
         libraryRows = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
         if (window.BeeGodAnalytics && window.BeeGodRender) {
-  const analytics = window.BeeGodAnalytics.calculateAnalytics(
-    rows,
-    supportRows,
-    libraryRows,
-    historyRows
-  );
+ const analytics = window.BeeGodAnalytics.build({
+  requests: rows,
+  dedications: [],
+  support: supportRows
+});
 
   window.BeeGodRender.renderDashboard(analytics);
 }
@@ -172,12 +171,11 @@ function startFirebase() {
       .onSnapshot((snapshot) => {
         historyRows = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
       if (window.BeeGodAnalytics && window.BeeGodRender) {
-  const analytics = window.BeeGodAnalytics.calculateAnalytics(
-    rows,
-    supportRows,
-    libraryRows,
-    historyRows
-  );
+ const analytics = window.BeeGodAnalytics.build({
+  requests: rows,
+  dedications: [],
+  support: supportRows
+});
 
   window.BeeGodRender.renderDashboard(analytics);
 }
