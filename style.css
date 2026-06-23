@@ -207,3 +207,36 @@
     line-height: 1;
   }
 }
+@media (max-width: 480px) {
+  .welcome-card,
+  .intro-card,
+  .onboarding-card {
+    padding: 20px 20px 18px;
+    transform: scale(0.92);
+    transform-origin: top center;
+  }
+
+  .welcome-card h1,
+  .intro-card h1,
+  .onboarding-card h1 {
+    font-size: 30px;
+    line-height: 0.95;
+  }
+
+  .welcome-card p,
+  .intro-card p,
+  .onboarding-card p,
+  .welcome-card li,
+  .intro-card li,
+  .onboarding-card li {
+    font-size: 15px;
+    line-height: 1.35;
+  }
+
+  .welcome-card button,
+  .intro-card button,
+  .onboarding-card button {
+    padding: 14px 18px;
+    margin-top: 10px;
+  }
+}
