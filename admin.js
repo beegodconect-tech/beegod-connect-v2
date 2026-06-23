@@ -152,7 +152,16 @@ function startFirebase() {
       .limit(20)
       .onSnapshot((snapshot) => {
         libraryRows = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
-        renderDashboard();
+        if (window.BeeGodAnalytics && window.BeeGodRender) {
+  const analytics = window.BeeGodAnalytics.calculateAnalytics(
+    rows,
+    supportRows,
+    libraryRows,
+    historyRows
+  );
+
+  window.BeeGodRender.renderDashboard(analytics);
+}
       });
 
     unsubscribers.push(libraryUnsub);
@@ -162,7 +171,16 @@ function startFirebase() {
       .limit(50)
       .onSnapshot((snapshot) => {
         historyRows = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
-        renderDashboard();
+      if (window.BeeGodAnalytics && window.BeeGodRender) {
+  const analytics = window.BeeGodAnalytics.calculateAnalytics(
+    rows,
+    supportRows,
+    libraryRows,
+    historyRows
+  );
+
+  window.BeeGodRender.renderDashboard(analytics);
+}
       });
 
     unsubscribers.push(historyUnsub);
