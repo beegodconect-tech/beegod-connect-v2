@@ -164,3 +164,46 @@
     opacity:.82;
   }
 }
+.onboarding-card,
+.intro-card,
+.welcome-card {
+  max-height: none;
+  height: auto;
+}
+
+.onboarding-content,
+.intro-content,
+.welcome-content {
+  max-height: none;
+  overflow: visible;
+}
+
+@media (max-width: 480px) {
+  body {
+    min-height: 100dvh;
+    overflow-y: auto;
+  }
+
+  .onboarding-card,
+  .intro-card,
+  .welcome-card {
+    width: calc(100% - 32px);
+    max-width: 420px;
+    padding: 28px 22px;
+    margin: 20px auto;
+  }
+
+  .onboarding-card p,
+  .intro-card p,
+  .welcome-card p {
+    font-size: 16px;
+    line-height: 1.45;
+  }
+
+  .onboarding-card h1,
+  .intro-card h1,
+  .welcome-card h1 {
+    font-size: 34px;
+    line-height: 1;
+  }
+}
