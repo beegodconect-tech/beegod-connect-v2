@@ -194,12 +194,16 @@ $$('.lang').forEach(b => b.onclick = () => {
 $$('[data-open]').forEach(b => b.onclick = () => openModal(b.dataset.open));
 $('#closeModal').onclick = () => $('#modal').classList.add('hidden');
 $('#modal').onclick = e => { if (e.target.id === 'modal') $('#modal').classList.add('hidden'); };
-$('#clearRequests').onclick = () => {
-  if (confirm('Limpar apenas a fila local deste navegador?')) {
-    localStorage.removeItem('beegod_requests');
-    renderRequests([]);
-  }
-};
+const clearRequestsBtn = $('#clearRequests');
+
+if (clearRequestsBtn) {
+  clearRequestsBtn.onclick = () => {
+    if (confirm('Limpar apenas a fila local deste navegador?')) {
+      localStorage.removeItem('beegod_requests');
+      renderRequests([]);
+    }
+  };
+}
 $('#year').textContent = new Date().getFullYear();
 applyLang();
 listenRequests();
