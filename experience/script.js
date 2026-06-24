@@ -201,21 +201,21 @@ function injectOnboardingStyles() {
   const style = document.createElement('style');
   style.id = 'beegodOnboardingStyles';
   style.textContent = `
-    .beegod-onboarding{
-      position:fixed;
-      inset:0;
-      z-index:9999;
-      background:
-        linear-gradient(180deg,rgba(0,0,0,.22),rgba(0,0,0,.82)),
-        url('../assets/hero-beegod-v2.png');
-      background-size:cover;
-      background-position:center top;
-      color:#fff8ec;
-      overflow:auto;
-      display:flex;
-      align-items:flex-end;
-      padding:22px;
-    }
+   .beegod-onboarding{
+  position:fixed;
+  inset:0;
+  z-index:9999;
+  background:
+    linear-gradient(180deg, rgba(0,0,0,.22), rgba(0,0,0,.82)),
+    url('../assets/hero-beegod-v2.png');
+  background-size:cover;
+  background-position:center top;
+  color:#fff8ec;
+  overflow-y:auto;
+  display:flex;
+  align-items:flex-start;
+  padding:18px 18px 28px;
+}
 
     .beegod-onboarding-card{
       width:100%;
