@@ -259,6 +259,14 @@ function render() {
     );
 
     const { artist, title } = splitArtistAndTitle(item);
+    function buildLibraryId(artist, title) {
+  return `${artist}-${title}`
+    .toLowerCase()
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '') || 'musica-sem-identificacao';
+}
     const youtubeUrl = youtubeSearchUrl(artist, title);
 
     return `<article class="card">
