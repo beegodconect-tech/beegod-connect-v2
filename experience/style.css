@@ -443,7 +443,7 @@ background-repeat: no-repeat;
     }
 
     .hero-content {
-        margin-top: 30px
+        margin-top: 310px
     }
 
     .hero h1 {
@@ -463,4 +463,66 @@ background-repeat: no-repeat;
     .section {
         padding: 42px 18px
     }
+}
+.bee-step {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 32px 28px;
+  border: 1px solid rgba(245, 196, 92, 0.45);
+  border-radius: 28px;
+  background: rgba(0, 0, 0, 0.82);
+}
+
+.bee-step h2 {
+  font-size: clamp(36px, 9vw, 72px);
+  line-height: 0.95;
+  margin: 12px 0 24px;
+}
+
+.bee-step p {
+  font-size: 20px;
+  line-height: 1.45;
+}
+
+.bee-list {
+  display: grid;
+  gap: 10px;
+  margin: 22px 0;
+  font-size: 20px;
+  font-weight: 800;
+}
+
+.bee-actions {
+  display: grid;
+  gap: 14px;
+  margin-top: 24px;
+}
+
+@media (max-width: 480px) {
+  .bee-step {
+    width: calc(100% - 28px);
+    padding: 22px 20px;
+    border-radius: 24px;
+  }
+
+  .bee-step h2 {
+    font-size: 44px;
+    margin: 8px 0 18px;
+  }
+
+  .bee-step p {
+    font-size: 17px;
+    line-height: 1.35;
+  }
+
+  .bee-list {
+    gap: 6px;
+    margin: 16px 0;
+    font-size: 17px;
+  }
+
+  .bee-actions {
+    margin-top: 18px;
+    gap: 12px;
+  }
 }
